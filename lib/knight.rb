@@ -1,18 +1,11 @@
 class Knight
-  def initialize(**opts)
-    @color = opts[:color]
+  def local_move_valid?(start:, goal:, board:)
+    start_x, start_y = start
+    neighbours = steps.map { |x, y| [start_x + x, start_y + y] } 
+    neighbours.any? { |neighbour| neighbour == goal }
   end
 
-  def neightbours(x, y)
-    [
-      [x + 2, y + 1],
-      [x + 2, y - 1],
-      [x - 2, y + 1],
-      [x - 2, y - 1],
-      [x - 1, y - 2],
-      [x - 1, y + 2],
-      [x + 1, y - 2],
-      [x + 1, y + 2]
-    ]
+  def steps
+    [[1, -2], [1, 2], [-1, -2], [-1, 2], [-2, -1], [-2, 1], [2, -1], [2, 1]]
   end
 end

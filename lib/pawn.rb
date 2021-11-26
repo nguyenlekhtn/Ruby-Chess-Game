@@ -6,15 +6,11 @@ class Pawn
     @moved = false
   end
 
-  def neightbours(x, y, board)
-    neightbours = []
-    distance = moved == true ? 1 : 2
-    neightbours << if black
-                     [x, y + distance]
-                   else
-                     [x, y - distance]
-                   end
+  def piece_valid?
+    
+  end
 
-    neightbours
+  def valid?(start:, goal:, player:)
+    super(goal: goal, player: player) && 
   end
 end
