@@ -1,5 +1,5 @@
-class Knight
-  def local_move_valid?(start:, goal:, board:)
+class Knight < Piece
+  def local_move_valid?(start:, goal:)
     start_x, start_y = start
     neighbours = steps.map { |x, y| [start_x + x, start_y + y] } 
     neighbours.any? { |neighbour| neighbour == goal }

@@ -6,11 +6,10 @@ class Pawn
     @moved = false
   end
 
-  def piece_valid?
-    
-  end
-
-  def valid?(start:, goal:, player:)
-    super(goal: goal, player: player) && 
+  def local_move_valid?(start:, goal:)
+    range = @moved ? 1 : 2
+    if 'color' == black
+      
+    end
   end
 end
