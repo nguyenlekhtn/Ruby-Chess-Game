@@ -7,9 +7,6 @@ class Pawn
   end
 
   def local_move_valid?(start:, goal:)
-    range = @moved ? 1 : 2
-    if 'color' == black
-      
-    end
+    Moves.forward_by_color(start: start, goal: goal)
   end
 end
