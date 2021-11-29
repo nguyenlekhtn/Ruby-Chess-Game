@@ -1,21 +1,16 @@
 class Player
-  def initialize
-    
+  def initialize(color)
+    @color = color
   end
 
-  def get_start_square(board)
+  def get_start_and_goal_locations
     loop do
-      start = gets.chomp
-      
-      return start if board.player_piece_in_square?(player: self, square: start)
-      
-    end
-  end
+      puts 'Please input the start location that contained the piece you want to move, and the location it should move into'
+      puts 'Format: <start><goal>. Example: b1b2'
+      input = gets.chomp.downcase
+      return input if /([a-h][1-8]){2}/.match(input)
 
-  def get_goal_square(valid_moves)
-    loop do
-      goal = gets.chomp
-      return goal if valid_move.include? goal
+      puts 'Invalid input format'
     end
   end
 end

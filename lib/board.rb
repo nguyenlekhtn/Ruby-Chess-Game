@@ -6,25 +6,6 @@ class Board
     @pieces = pieces_init
   end
 
-  def make_move(goal:, start:, piece:, special_move: nil)
-    # copy value from start to goal
-    start_value = get_value(square: start)
-    set_value(square: goal, value: start_value)
-  end
-
-  def default_board_arr
-    %w[
-      ROOK KNIGHT BISHOP QUEEN KING BISHOP KNIGHT ROOK
-      PAWN PAWN PAWN PAWN PAWN PAWN PAWN PAWN
-      EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY
-      EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY
-      EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY
-      EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY EMPTY
-      PAWN PAWN PAWN PAWN PAWN PAWN PAWN PAWN
-      ROOK KNIGHT BISHOP QUEEN KING BISHOP KNIGHT ROOK
-    ]
-  end
-
   def pieces_init
     pieces_location.each_with_object([]) do |(k, v), a|
       color = piece_color(k)
@@ -40,12 +21,17 @@ class Board
   def at(position)
     {
       :empty? => empty?(position),
-      :value => pieces.find { |piece| piece.start == position }
+      :value => get_piece_at_position(position),
+      :remove => get_piece_at_position(position).remove
     }
   end
 
   def all_empty?(positions)
     positions.all? { |position| empty?(position) }
+  end
+
+  def get_piece_at_position(position)
+    pieces.find { |piece| piece.start == position }
   end
 
   private
