@@ -1,8 +1,8 @@
 class Pawn
   attr_reader :color
 
-  def initialize(**opts)
-    @color = opts[:color]
+  def post_initialize
+    @type = 'pawn'
     @moved = false
   end
 

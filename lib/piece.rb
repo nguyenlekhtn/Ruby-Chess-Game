@@ -3,6 +3,7 @@ class Piece
     @color = opts[:color]
     @board = opts[:board]
     @start = opts[:start]
+    post_initialize
   end
 
   def move_valid?(goal)
@@ -21,4 +22,6 @@ class Piece
   def remove
     @start = nil
   end
+
+  def post_initialize; end
 end
