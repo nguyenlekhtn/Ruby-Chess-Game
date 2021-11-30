@@ -1,4 +1,6 @@
 class Piece
+  attr_reader :color, :board, :start
+
   def initialize(**opts)
     @color = opts[:color]
     @board = opts[:board]
@@ -7,8 +9,8 @@ class Piece
   end
 
   def move_valid?(goal)
-    (@board.at(goal)[:empty?] || @board.at(goal)[:value].color != @color) &&
-      local_move_valid?(start: @start, goal: goal)
+    (board.at(goal)[:empty?] || board.at(goal)[:value].color != @color) &&
+      local_move_valid?(start: start, goal: goal)
   end
 
   def local_move_valid?
