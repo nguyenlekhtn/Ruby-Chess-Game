@@ -1,6 +1,7 @@
-# require_relative '../'
+require_relative '../moves'
+require_relative '../piece'
 
-class Queen
+class Queen < Piece
   def post_initialize
     @type = 'queen'
   end

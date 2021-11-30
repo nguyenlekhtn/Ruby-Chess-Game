@@ -1,4 +1,7 @@
-class Pawn
+require_relative '../moves'
+require_relative '../piece'
+
+class Pawn < Piece
   attr_reader :color
 
   def post_initialize

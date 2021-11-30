@@ -1,6 +1,7 @@
 require_relative '../moves'
+require_relative '../piece'
 
-class Rook
+class Rook < Piece
   def post_initialize
     @type = 'rook'
   end

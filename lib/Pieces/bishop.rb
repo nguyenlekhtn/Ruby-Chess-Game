@@ -1,3 +1,6 @@
+require_relative '../moves'
+require_relative '../piece'
+
 class Bishop < Piece
   def post_initialize
     @type = 'bishop'
