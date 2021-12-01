@@ -1,5 +1,6 @@
 module Moves
-  
+  module_function
+
   def vertical(start:, goal:)
     _x0, y0 = start
     _x1, y1 = goal
@@ -15,7 +16,7 @@ module Moves
   def diagonal(start:, goal:)
     x0, y0 = start
     x1, y1 = goal
-    (x0 - x1).abs == (y0 - y1).abs && horizontal_squares_inside_empty?(start: start, goal: goal)
+    (x0 - x1).abs == (y0 - y1).abs && diagonal_squares_inside_empty?(start: start, goal: goal)
   end
 
   def x_by_n(num:, start:, goal:)
@@ -56,4 +57,5 @@ module Moves
     squares_between = x_range.zip(y_range)
     @board.all_empty?(squares_between)
   end
+
 end
