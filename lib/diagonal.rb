@@ -6,7 +6,7 @@ module Diagonal
   end
 
   def range_countdownable(start, goal)
-    start < goal ? (start + 1).upto(goal - 1) : (start + 1).downto(goal - 1).to_a
+    start < goal ? (start + 1).upto(goal - 1) : (start - 1).downto(goal + 1).to_a
   end
 
   def diagonal_squares_inside_empty?(start:, goal:)
