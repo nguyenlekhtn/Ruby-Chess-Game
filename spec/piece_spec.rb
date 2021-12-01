@@ -94,4 +94,21 @@ describe Piece do
       end
     end
   end
+
+
+  describe 'to' do
+    subject(:piece_to) { described_class.new(start: [1, 1]) }
+
+    it 'change start to the given argument' do
+      expect { piece_to.to([2, 2]) }.to change { piece_to.start }.from([1,1]).to([2, 2] )
+    end
+  end
+
+  describe 'remove' do
+    subject(:piece_remove) { described_class.new(start: [1, 1]) }
+
+    it 'change start to nil' do
+      expect { piece_remove.remove }.to change { piece_remove.start }.from([1,1]).to(nil)
+    end
+  end
 end
