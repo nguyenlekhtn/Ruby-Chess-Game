@@ -9,11 +9,11 @@ class Piece
   end
 
   def move_valid?(goal)
-    (board.at(goal)[:empty?] || board.at(goal)[:value].color != @color) &&
+    in_range?(goal) && (board.empty_at?(goal) || board.color_at(goal) != @color) &&
       local_move_valid?(start: start, goal: goal)
   end
 
-  def local_move_valid?
+  def local_move_valid?(start:, goal:)
     true
   end
 
@@ -26,4 +26,12 @@ class Piece
   end
 
   def post_initialize; end
+
+  def in_range?(position)
+    x, y = position
+    x.between?(0, 7) && y.between?(0, 7)
+  end
+
+  private
+
 end
