@@ -18,20 +18,28 @@ class Board
     end
   end
 
-  def at(position)
-    {
-      :empty? => empty?(position),
-      :value => get_piece_at_position(position),
-      :remove => get_piece_at_position(position).remove
-    }
-  end
+  # def at(position)
+  #   {
+  #     :empty? => empty?(position),
+  #     :value => get_piece_at_position(position),
+  #     :remove => get_piece_at_position(position).remove
+  #   }
+  # end
 
-  def all_empty?(positions)
+  def all_empty?(*positions)
     positions.all? { |position| empty?(position) }
   end
 
-  def get_piece_at_position(position)
-    pieces.find { |piece| piece.start == position }
+  # def get_piece_at_position(position)
+  #   pieces.find { |piece| piece.start == position }
+  # end
+
+  def empty_at?(position)
+    pieces.none? { |piece| piece.start == position}
+  end
+
+  def color_at(position)
+    pieces.find { |piece| piece.start == position }&.color
   end
 
   private
@@ -48,10 +56,6 @@ class Board
 
   def location_valid?(location)
     /^[a-h][1-8]$/.match?(location)
-  end
-
-  def empty?(position)
-    pieces.none? { |piece| piece.start == position}
   end
 
   def pieces_location
