@@ -1,4 +1,5 @@
 require_relative '../lib/Pieces/bishop'
+require_relative '../lib/board'
 require_relative 'piece_interface_spec'
 require_relative 'piece_subclass_spec'
 
@@ -8,10 +9,10 @@ describe Bishop do
 
   describe 'local_move_valid?' do
     let(:board) { instance_double(Board) }
-    subject(:bishop_local) { described_class.new(color: 'white', board: board, start: [0,0]) }
+    subject(:bishop_local) { described_class.new(color: 'white', board: board, start: [0, 0]) }
 
 
-    context 'when the start and goal is in a upright diagonal line' do
+    context 'when the start and goal is in a upright diagonal line and no piece is in between' do
       before do
         allow(board).to receive(:all_empty?).with([2, 2]).and_return(true)
       end
@@ -22,4 +23,5 @@ describe Bishop do
       end
     end
   end
+
 end
