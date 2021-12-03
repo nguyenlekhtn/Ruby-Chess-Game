@@ -11,9 +11,9 @@ describe Queen do
     let(:board) { instance_double(Board) }
     subject(:queen) { described_class.new(board: board) }
 
-    context 'when goal is in same horizontal line' do
+    context 'when goal is in same horizontal line and no piece is in between' do
       before do
-        allow(board).to receive(:all_empty?).with([1, 2], [1, 3]).and_return(true)
+        allow(board).to receive(:all_empty?).and_return(true)
       end
 
       it 'returns true' do
@@ -23,12 +23,48 @@ describe Queen do
       end
     end
 
-    context 'when goal is in same vertical line' do
-      xit 'returns true' do
+    context 'when goal is in same vertical line and no piece is in between' do
+      before do
+        allow(board).to receive(:all_empty?).and_return(true)
+      end
+
+      it 'returns true' do
         start = [1, 1]
         goal = [3, 1]
         expect(queen.local_move_valid?(start: start, goal: goal)).to be true
       end
+    end
+
+    context 'when goal is in same diagonal line and no piece is in between' do
+      before do
+        allow(board).to receive(:all_empty?).and_return(true)
+      end
+
+      it 'returns true' do
+        start = [1, 1]
+        goal = [2, 2]
+        expect(queen.local_move_valid?(start: start, goal: goal)).to be true
+      end
+    end
+
+    context 'when goal is in same diagonal line and there are pieces in between' do
+      before do
+        allow(board).to receive(:all_empty?).and_return(false)
+      end
+
+      it 'returns false' do
+        start = [1, 1]
+        goal = [2, 2]
+        expect(queen.local_move_valid?(start: start, goal: goal)).to be false
+      end
+    end
+    
+    context 'when goal is not in the same horizontal, vertical or diagonal line' do
+       it 'returns false' do
+        start = [1, 1]
+        goal = [2, 3]
+        expect(queen.local_move_valid?(start: start, goal: goal)).to be false
+       end
     end
   end
 end
