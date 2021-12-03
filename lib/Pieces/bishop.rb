@@ -4,10 +4,6 @@ require_relative '../piece'
 class Bishop < Piece
   include Diagonal
 
-  def post_initialize
-    @type = 'bishop'
-  end
-
   def local_move_valid?(start:, goal:)
     diagonal(start: start, goal: goal)
   end

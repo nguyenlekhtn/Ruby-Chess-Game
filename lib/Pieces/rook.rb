@@ -1,13 +1,11 @@
-require_relative '../moves'
 require_relative '../piece'
+require_relative '../lateral'
 
 class Rook < Piece
-  def post_initialize
-    @type = 'rook'
-  end
+  include Lateral
 
   def local_move_valid?(start:, goal:)
-    Moves.vertical(start: start, goal: goal) ||
-      Moves.horizontal(start: start, goal: goal)
+    vertical(start: start, goal: goal) ||
+      horizontal(start: start, goal: goal)
   end
 end
