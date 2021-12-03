@@ -1,4 +1,8 @@
+require_relative 'reversable_range'
+
 module Lateral
+  include ReversableRange
+    
   def vertical(start:, goal:)
     _x0, y0 = start
     _x1, y1 = goal
@@ -14,15 +18,15 @@ module Lateral
   def vertical_squares_inside_empty?(start:, goal:)
     x0, y0 = start
     _x1, y1 = goal
-    squares_between = (y0 + 1..y1 - 1).map { |y| [x0, y] }
-    @board.all_empty?(squares_between)
+    squares_between = reversable_range(y0 + 1, y1 - 1).map { |y| [x0, y] }
+    @board.all_empty?(*squares_between)
   end
 
   def horizontal_squares_inside_empty?(start:, goal:)
     x0, y0 = start
-    x1, y1 = goal
-    squares_between = (x0 + 1..x1 - 1).map { |x| [x, y0] }
-    @board.all_empty?(squares_between)
+    x1, _y1 = goal
+    squares_between = reversable_range(x0 + 1, x1 - 1).map { |x| [x, y0] }
+    @board.all_empty?(*squares_between)
   end
 
 end
