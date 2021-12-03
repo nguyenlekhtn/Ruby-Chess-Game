@@ -5,7 +5,7 @@ class Piece
     @color = opts[:color]
     @board = opts[:board]
     @start = opts[:start]
-    post_initialize
+    post_initialize(opts)
   end
 
   def move_valid?(goal)
