@@ -13,7 +13,6 @@ class Chess
       player_input(current_player) => { piece:, start:, goal: }
       if @board.at(goal)[:empty?]
         piece.to(goal)
-        piece.type == 'pawn' ? reset_half_move_clock : increase_half_move_clock
       else
         board.at(goal)[:value].remove
         reset_half_move_clock
@@ -22,6 +21,8 @@ class Chess
       switch_active_color
     end
   end
+
+  def save; end
 
   private
 
