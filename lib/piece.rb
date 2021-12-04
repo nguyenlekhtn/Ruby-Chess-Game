@@ -25,7 +25,7 @@ class Piece
     @start = nil
   end
 
-  def post_initialize; end
+  def post_initialize(opts); end
 
   def in_range?(position)
     x, y = position
