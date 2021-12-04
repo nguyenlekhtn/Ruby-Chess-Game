@@ -9,7 +9,8 @@ describe Player do
     context 'when input is out-range' do
       it 'sends player_input again' do
         input = 'A8A1'
-        expect(player).to receive(:player_input)
+        error_msg = 'Invalid input format'
+        expect(player).to receive(:puts).with(error_msg)
         player.player_input(input)
       end
     end
