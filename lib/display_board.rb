@@ -23,7 +23,7 @@ module DisplayBoard
   def piece_to_unicode(piece)
     return ' ' if piece.nil?
 
-    (color_map[piece.color] + piece_map[piece.type]).chr(Encoding::UTF_8)
+    (color_map[piece.color] + piece_map[piece.class.name.downcase]).chr(Encoding::UTF_8)
   end
 
   def board_row(pieces)
