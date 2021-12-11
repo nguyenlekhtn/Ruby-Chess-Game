@@ -10,16 +10,12 @@ class Player
     show_prompt_start_goal
 
     input ||= gets.chomp.downcase
-    
-    case input
-    when /([a-h][1-8]){2}/
-      start = input.slice(0, 2)
-      goal = input.slice(2, 2)
-      return { start: start, goal: goal }
-    else
-      puts 'Invalid input format'
-      player_input
-    end
+
+    return input if /([a-h][1-8]){2}/.match(input)
+  end
+
+  def play(board)
+    start, goal = get_start_goal
 
   end
 

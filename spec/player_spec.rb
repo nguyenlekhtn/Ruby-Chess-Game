@@ -6,9 +6,9 @@ describe Player do
     let(:game) { instance_double(Chess) }
     subject(:player) { described_class.new(game: game)}
 
-    context 'when input is out-range' do
+    context 'when input is out of range' do
       it 'sends player_input again' do
-        input = 'A8A1'
+        input = 'A9A1'
         error_msg = 'Invalid input format'
         expect(player).to receive(:puts).with(error_msg)
         player.player_input(input)
