@@ -8,18 +8,15 @@ class Chess
     @players = { 'black' => player_class.new('black'), 'white' => player_class.new('white') }
   end
 
-  def play_game
-    loop do
-      player_input(current_player) => { piece:, start:, goal: }
-      if @board.at(goal)[:empty?]
-        piece.to(goal)
-      else
-        board.at(goal)[:value].remove
-        reset_half_move_clock
-      end
-      increase_full_move if @active_color == 'black'
-      switch_active_color
-    end
+  def play(move = Move.new(current_player))
+    move.play
+  end
+
+  def end_move
+    increase_half_moves
+    increase full_moves if current_player.color == 'black'
+    close_game if game_over?
+    switch_current_player
   end
 
   def save; end
