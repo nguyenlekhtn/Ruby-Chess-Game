@@ -6,24 +6,37 @@ class Player
     @game = opts[:game]
   end
 
-  def player_input(input = nil)
-    show_prompt_start_goal
+  def player_input
+    input = gets.chomp.downcase
 
-    input ||= gets.chomp.downcase
+    return input if /^([A-Z][1-8]){2}$/.match?(input)
 
-    return input if /([a-h][1-8]){2}/.match(input)
+    puts 'Invalid format'
   end
 
-  def play(board)
-    start, goal = get_start_goal
+  def get_start_square(board)
+    loop do
+      start = player_input
+      return start if board.square_has_same_color(color)
 
+      puts 'Invalid start input'
+    end
+  end
+
+  def get_goal_square(piece:, start:)
+    loop do
+      goal = player_input
+      return goal if piece.movable?(start: start, goal: goal)
+
+      puts 'Invalid goal input'
+    end
   end
 
   def show_prompt_start_goal
-    print <<~EOF
+    print <<~MSG
       Enter the location of your piece you want to move and location you want to move into
 
       Selection:\s
-    EOF
+    MSG
   end
 end
