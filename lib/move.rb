@@ -1,7 +1,9 @@
 class Move
-  def initialize(player:, board:, game:)
-    @player = player
-    @game = game
+  def initialize(**opts)
+    @player = opts[player]
+    @game = opts[game]
+    @valid_from = opts[valid_from]
+    @valid_to = opts[valid_to]
   end
 
   def start

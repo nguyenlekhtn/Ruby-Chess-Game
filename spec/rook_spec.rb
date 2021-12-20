@@ -16,8 +16,8 @@ describe Rook do
       end
 
       it 'returns true' do
-        start = [1, 1]
-        goal = [1, 4]
+        start = { row: 1, col: 2 }
+        goal =  { row: 1, col: 4 }
         expect(queen.local_move_valid?(start: start, goal: goal)).to be true
       end
     end
@@ -28,8 +28,8 @@ describe Rook do
       end
 
       it 'returns true' do
-        start = [3, 3]
-        goal = [3, 1]
+        start = { row: 3, col: 3 }
+        goal =  { row: 3, col: 1}
         expect(queen.local_move_valid?(start: start, goal: goal)).to be true
       end
     end
@@ -40,20 +40,20 @@ describe Rook do
       end
 
       it 'returns true' do
-        start = [1, 1]
-        goal = [3, 1]
+        start = { row: 1, col: 1 }
+        goal =  { row: 3, col: 1}
         expect(queen.local_move_valid?(start: start, goal: goal)).to be true
       end
     end
 
-    context 'when goal is in same diagonal line and there are pieces in between' do
+    context 'when goal is in same diagonal line and there are no pieces in between' do
       before do
-        allow(board).to receive(:all_empty?).and_return(false)
+        allow(board).to receive(:all_empty?).and_return(true)
       end
 
       it 'returns false' do
-        start = [1, 1]
-        goal = [2, 2]
+        start = { row: 1, col: 1 }
+        goal =  { row: 4, col: 4 }
         expect(queen.local_move_valid?(start: start, goal: goal)).to be false
       end
     end
@@ -64,8 +64,8 @@ describe Rook do
       end
 
       it 'returns false' do
-        start = [1, 1]
-        goal = [2, 2]
+        start = { row: 3, col: 2 }
+        goal = { row: 1, col: 6 }
         expect(queen.local_move_valid?(start: start, goal: goal)).to be false
       end
     end
