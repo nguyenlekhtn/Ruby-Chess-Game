@@ -13,7 +13,7 @@ describe Knight do
       it 'returns true' do
         start = [3, 3]
         goal = [4, 5]
-        expect(knight.local_move_valid?(start: start, goal: goal)).to be true
+        expect(knight.local_move_valid?(start:, goal:)).to be true
       end
     end
 
@@ -21,7 +21,7 @@ describe Knight do
       it 'returns true' do
         start = [3, 3]
         goal = [1, 4]
-        expect(knight.local_move_valid?(start: start, goal: goal)).to be true
+        expect(knight.local_move_valid?(start:, goal:)).to be true
       end
     end
 
@@ -29,7 +29,7 @@ describe Knight do
       it 'returns false' do
         start = [3, 3]
         goal = [5, 3]
-        expect(knight.local_move_valid?(start: start, goal: goal)).to be false
+        expect(knight.local_move_valid?(start:, goal:)).to be false
       end
     end
 
@@ -37,9 +37,8 @@ describe Knight do
       it 'returns false' do
         start = [3, 3]
         goal = [7, 4]
-        expect(knight.local_move_valid?(start: start, goal: goal)).to be false
+        expect(knight.local_move_valid?(start:, goal:)).to be false
       end
     end
   end
 end
-

@@ -6,7 +6,7 @@ module Diagonal
   def diagonal(start:, goal:)
     x0, y0 = start
     x1, y1 = goal
-    (x0 - x1).abs == (y0 - y1).abs && diagonal_squares_inside_empty?(start: start, goal: goal)
+    (x0 - x1).abs == (y0 - y1).abs && diagonal_squares_inside_empty?(start:, goal:)
   end
 
   def diagonal_squares_inside_empty?(start:, goal:)
@@ -17,4 +17,6 @@ module Diagonal
     squares_between = x_range.zip(y_range)
     @board.all_empty?(*squares_between)
   end
+
+  def diagonal_lines_cross_square(square); end
 end

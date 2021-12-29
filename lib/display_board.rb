@@ -3,11 +3,11 @@ module DisplayBoard
   vertical_line, horizontal_line, top_left, top_right, bottom_left, bottom_right, top_mid,
     bottom_mid, left_mid, right_mid, center = box
   horizontal_cell = horizontal_line * 3
-  top_line = top_left + (horizontal_cell + top_mid) * 3 + top_right
-  rows_line = left_mid + (horizontal_cell + center) * 3 + right_mid
-  bottom_line = left_mid + (horizontal_cell + bottom_mid) * 3 + right_mid
-  inside =  "%{piece} " + vertical_line
-  piece_map = { 
+  top_line = top_left + ((horizontal_cell + top_mid) * 3) + top_right
+  rows_line = left_mid + ((horizontal_cell + center) * 3) + right_mid
+  bottom_line = left_mid + ((horizontal_cell + bottom_mid) * 3) + right_mid
+  inside =  '%{piece} ' + vertical_line
+  piece_map = {
     'king' => 0,
     'queen' => 1,
     'rook' => 2,

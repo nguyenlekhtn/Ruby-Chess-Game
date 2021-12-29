@@ -7,8 +7,8 @@ class Queen < Piece
   include Diagonal
 
   def local_move_valid?(start:, goal:)
-    vertical(start: start, goal: goal) ||
-      horizontal(start: start, goal: goal) ||
-      diagonal(start: start, goal: goal)
+    vertical(start:, goal:) ||
+      horizontal(start:, goal:) ||
+      diagonal(start:, goal:)
   end
 end

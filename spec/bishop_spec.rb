@@ -9,8 +9,7 @@ describe Bishop do
 
   describe 'local_move_valid?' do
     let(:board) { instance_double(Board) }
-    subject(:bishop_local) { described_class.new(color: 'white', board: board, start: [0, 0]) }
-
+    subject(:bishop_local) { described_class.new(color: 'white', board:, start: [0, 0]) }
 
     context 'when the start and goal is in a upright diagonal line and no piece is in between' do
       before do
@@ -19,7 +18,7 @@ describe Bishop do
       it 'return true' do
         start = [1, 1]
         goal = [3, 3]
-        expect(bishop_local.local_move_valid?(start: start, goal: goal)).to eq(true)
+        expect(bishop_local.local_move_valid?(start:, goal:)).to eq(true)
       end
     end
 
@@ -30,7 +29,7 @@ describe Bishop do
       it 'returns true' do
         start = [3, 3]
         goal = [1, 5]
-        expect(bishop_local.local_move_valid?(start: start, goal: goal)).to eq(true)
+        expect(bishop_local.local_move_valid?(start:, goal:)).to eq(true)
       end
     end
 
@@ -41,7 +40,7 @@ describe Bishop do
       it 'returns false' do
         start = [3, 3]
         goal = [1, 5]
-        expect(bishop_local.local_move_valid?(start: start, goal: goal)).to eq(false)
+        expect(bishop_local.local_move_valid?(start:, goal:)).to eq(false)
       end
     end
 
@@ -49,9 +48,8 @@ describe Bishop do
       it 'returns false' do
         start = [3, 3]
         goal = [1, 6]
-        expect(bishop_local.local_move_valid?(start: start, goal: goal)).to eq(false)
+        expect(bishop_local.local_move_valid?(start:, goal:)).to eq(false)
       end
     end
   end
-
 end

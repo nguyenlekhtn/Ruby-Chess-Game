@@ -5,6 +5,6 @@ class Bishop < Piece
   include Diagonal
 
   def local_move_valid?(start:, goal:)
-    diagonal(start: start, goal: goal)
+    diagonal(start:, goal:)
   end
 end

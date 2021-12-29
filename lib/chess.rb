@@ -53,14 +53,14 @@ class Chess
     return nil if @board.at(start)[:empty?] || @board.color_at_location != @active_color
 
     piece = @board.piece_at_location(start)
-    return nil if piece.move_valid?(goal: goal)
+    return nil if piece.move_valid?(goal:)
 
     start_xy = @board.location_to_xy(start)
     goal_xy = @board.location_to_xy(goal)
 
-    { piece: piece, start: start_xy, goal: goal_xy }
+    { piece:, start: start_xy, goal: goal_xy }
   end
-  
+
   def current_player
     @players[@active_color]
   end

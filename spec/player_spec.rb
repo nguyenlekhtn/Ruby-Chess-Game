@@ -4,7 +4,7 @@ require_relative '../lib/player'
 describe Player do
   describe 'player_input' do
     let(:game) { instance_double(Chess) }
-    subject(:player) { described_class.new(game: game)}
+    subject(:player) { described_class.new(game:) }
 
     context 'when input is out of range' do
       it 'sends player_input again' do

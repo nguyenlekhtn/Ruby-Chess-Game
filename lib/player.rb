@@ -26,7 +26,7 @@ class Player
   def get_goal_square(piece:, start:)
     loop do
       goal = player_input
-      return goal if piece.movable?(start: start, goal: goal)
+      return goal if piece.movable?(start:, goal:)
 
       puts 'Invalid goal input'
     end

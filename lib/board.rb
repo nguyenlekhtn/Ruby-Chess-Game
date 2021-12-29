@@ -12,7 +12,7 @@ class Board
       piece_type = piece_type(k)
       v.each do |location|
         start = location_to_xy(location)
-        piece = piece_type.new(color: color, board: self, start: start)
+        piece = piece_type.new(color:, board: self, start:)
         a << piece
       end
     end
@@ -35,7 +35,7 @@ class Board
   # end
 
   def empty_at?(position)
-    pieces.none? { |piece| piece.start == position}
+    pieces.none? { |piece| piece.start == position }
   end
 
   def color_at(position)
@@ -60,13 +60,13 @@ class Board
 
   def pieces_location
     {
-      'P' => ('a'..'h').map { |char| char + '2'},
+      'P' => ('a'..'h').map { |char| char + '2' },
       'R' => %w[a1 h1],
       'N' => %w[b1 g1],
       'B' => %w[c1 f1],
       'Q' => %w[d1],
       'K' => %w[e1],
-      'p' => ('a'..'h').map { |char| char + '7'},
+      'p' => ('a'..'h').map { |char| char + '7' },
       'r' => %w[a8 h8],
       'n' => %w[b8 g8],
       'b' => %w[c8 f8],

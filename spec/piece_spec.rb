@@ -6,7 +6,7 @@ describe Piece do
 
   describe 'move_valid?' do
     let(:board) { instance_double(Board) }
-    subject(:piece_move) { described_class.new(color: 'white', board: board) }
+    subject(:piece_move) { described_class.new(color: 'white', board:) }
 
     context 'when goal.x is out of range' do
       it 'return false' do
@@ -72,7 +72,7 @@ describe Piece do
       before do
         allow(board).to receive(:empty_at?).with(goal).and_return(true)
         allow(piece_move).to receive(:in_range?).with(goal).and_return(true)
-        allow(piece_move).to receive(:local_move_valid?).with(start: piece_move.start, goal: goal).and_return(false)
+        allow(piece_move).to receive(:local_move_valid?).with(start: piece_move.start, goal:).and_return(false)
       end
 
       it 'returns false' do
@@ -86,7 +86,7 @@ describe Piece do
       before do
         allow(board).to receive(:empty_at?).with(goal).and_return(true)
         allow(piece_move).to receive(:in_range?).with(goal).and_return(true)
-        allow(piece_move).to receive(:local_move_valid?).with(start: piece_move.start, goal: goal).and_return(true)
+        allow(piece_move).to receive(:local_move_valid?).with(start: piece_move.start, goal:).and_return(true)
       end
 
       it 'returns true' do
@@ -95,12 +95,11 @@ describe Piece do
     end
   end
 
-
   describe 'to' do
     subject(:piece_to) { described_class.new(start: [1, 1]) }
 
     it 'change start to the given argument' do
-      expect { piece_to.to([2, 2]) }.to change { piece_to.start }.from([1,1]).to([2, 2] )
+      expect { piece_to.to([2, 2]) }.to change { piece_to.start }.from([1, 1]).to([2, 2])
     end
   end
 
@@ -108,7 +107,7 @@ describe Piece do
     subject(:piece_remove) { described_class.new(start: [1, 1]) }
 
     it 'change start to nil' do
-      expect { piece_remove.remove }.to change { piece_remove.start }.from([1,1]).to(nil)
+      expect { piece_remove.remove }.to change { piece_remove.start }.from([1, 1]).to(nil)
     end
   end
 end
